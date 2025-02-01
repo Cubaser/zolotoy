@@ -15,19 +15,8 @@ logging.basicConfig(
 )
 
 HEADERS = {
-        "User-Agent": "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Mobile Safari/537.36",
-        "Referer": "https://www.585zolotoy.ru/catalog/products/1881693/",
-        "baggage": 'sentry-environment=production,sentry-release=fdc6a717f5beda55fdc511a48d10dd9b64cfcf2b,sentry-public_key=549430436ae64fb2839c837636dd537a,sentry-trace_id=6e4b6084cb1f4ceb8aaf00919bd6fa6d,sentry-sample_rate=0.1,sentry-transaction=catalog-products-product,sentry-sampled=false',
-        "Accept": "*/*",
-        'sec-ch-ua': '"Not A(Brand";v="8", "Chromium";v="132", "Google Chrome";v="132"',
-        'sec-ch-ua-mobile': '?1',
-        'sec-ch-ua-platform': 'Android',
-        'sentry-trace': '6e4b6084cb1f4ceb8aaf00919bd6fa6d-95987b50c83bc696-0',
-        "Accept-Encoding": "gzip, deflate, br, zstd",
-        "Accept-Language": "ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7",
-        "x-qa-client-type": "WEB",
-        "x-qa-company": "3e6efe10-defd-4983-94a1-c5a4d3cb3689",
-        "x-qa-region": "a93acc32-8ed4-48ed-b105-abd0eb856021",
+        "x-qa-client-type": os.getenv('X_QA_CLIENT_TYPE'),
+        "x-qa-region": os.getenv('X_QA_REGION'),
 }
 
 URLS = [os.getenv('BRACELET_URL'), os.getenv('CHAIN_URL')]
@@ -101,7 +90,6 @@ def gold_parse(choose_url):
         logging.info(end_message)
         if len(items) < 20:
             break
-        break
         page_num += 1
 
     df = pd.DataFrame(data_out)
@@ -115,4 +103,5 @@ def gold_parse(choose_url):
 
 
 if __name__ == '__main__':
-    gold_parse(0)
+    print(gold_parse(0)) # Спарсить браслеты
+    print(gold_parse(1)) # Спарсить цепи
