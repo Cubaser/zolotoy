@@ -15,8 +15,8 @@ logging.basicConfig(
 )
 
 HEADERS = {
-        "x-qa-client-type": os.getenv('X_QA_CLIENT_TYPE'),
-        "x-qa-region": os.getenv('X_QA_REGION'),
+        'x-qa-client-type': os.getenv('X_QA_CLIENT_TYPE'),
+        'x-qa-region': os.getenv('X_QA_REGION'),
 }
 
 URLS = [os.getenv('BRACELET_URL'), os.getenv('CHAIN_URL')]
