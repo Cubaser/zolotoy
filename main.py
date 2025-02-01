@@ -13,6 +13,7 @@ logging.basicConfig(
     level=logging.INFO,
 )
 
+
 USERS = list(map(int, os.getenv('USERS').split(', ')))
 
 bot = TeleBot(os.getenv('BOT_TOKEN'))
